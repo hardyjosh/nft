@@ -16,17 +16,15 @@ contract PathGenerator is IStackToStack {
         string memory finalString;
         uint256 param = 0;
         bool writeParams = false;
-        string memory separator;
+        string memory separator = "?";
 
         for (uint i = 0; i < outputStack.length; i++) {
             if (inputStack[i] == PARAM_SENTINEL) {
                 writeParams = true;
             } else {
                 if (writeParams) {
-                    if (param == 0) {
+                    if (param == 1) {
                         separator = "&";
-                    } else {
-                        separator = "?";
                     }
                     finalString = string.concat(
                         finalString,
